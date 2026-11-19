@@ -30,6 +30,9 @@ void main() {
     Student(id: 001, name: "Sok", gender: "Male", age: 19, score: 99),
     Student(id: 002, name: "Sok Chea", gender: "Male", age: 17, score: 80),
     Student(id: 003, name: "Hii", gender: "Female", age: 18, score: 45),
+    Student(id: 004, name: "Sok Khai", gender: "Male", age: 20, score: 80),
+    Student(id: 005, name: "Sok Ra", gender: "Female", age: 20, score: 70),
+    Student(id: 006, name: "Hello", gender: "Female", age: 18, score: 45),
   ];
 
   var maleList = list.where((e) => e.gender == "Male").toList();
@@ -40,22 +43,48 @@ void main() {
       .where((e) => e.name.toLowerCase().contains("s"))
       .toList();
 
-  var filterScore = list.where((element) => element.score > 50,).toList();
+  var filterScore = list.where((element) => element.score > 50).toList();
 
-  var listName = list.map((e) => e.name,).toList();
+  var listName = list.map((e) => e.name).toList();
 
-  var listScore = list.map((e) => e.score,).toList();
+  var listScore = list.map((e) => e.score).toList();
+
+  var filterAge = list.where((e) => e.age > 18).map((e) => e.name).toList();
+
+  var filterMale = list
+      .where((e) => e.gender == "male")
+      .map((e) => e.score)
+      .toList();
+  var filterFemale = list
+      .where((e) => e.gender == "female")
+      .map((e) => e.score)
+      .toList();
+
+  var testToString = list
+      .where((e) => e.score > 50)
+      .map((e) => "Number $e")
+      .toList();
+
+  print("Male Student: ");
+  for (var e in filterMale) {
+    print(e);
+  }
 
   print(listName);
   print(listScore);
 
-  for (var e in filterScore){
+  print("Age above 18: ");
+  for (var e in filterAge) {
+    print(e);
+  }
+
+  for (var e in filterScore) {
     e.display();
   }
 
   int totalScore = 0;
 
-  for(var e in listScore){
+  for (var e in listScore) {
     totalScore += e;
   }
 
